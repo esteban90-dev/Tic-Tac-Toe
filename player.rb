@@ -11,7 +11,7 @@ class Player
     public
 
     def make_move(move)
-      @move.push(move)
+      @move = move
     end
 
 end
