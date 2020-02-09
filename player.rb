@@ -1,11 +1,10 @@
 class Player
-    attr_reader :name, :mark
-    attr_accessor :move
+    attr_reader :name, :mark, :move
 
     def initialize(name, mark)
       @name = name
       @mark = mark
-      @move = []
+      @move = 0
     end
 
     public
@@ -15,4 +14,3 @@ class Player
     end
 
 end
-
