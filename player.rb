@@ -1,16 +1,16 @@
 class Player
-    attr_reader :name, :mark, :move
+  attr_reader :name, :mark, :move
 
-    def initialize(name, mark)
-      @name = name
-      @mark = mark
-      @move = 0
-    end
+  def initialize(name, mark)
+    @name = name
+    @mark = mark
+    @move = 0
+  end
 
-    public
+  public
 
-    def make_move(move)
-      @move = move
-    end
+  def make_move(move)
+    @move = move
+  end
 
 end
