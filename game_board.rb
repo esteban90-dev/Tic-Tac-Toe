@@ -1,8 +1,8 @@
 class GameBoard
   attr_reader :contents
-    
-  def initialize(str)
-    @contents = str
+
+  def initialize()
+    @contents = '123456789'
   end
 
   public
@@ -17,8 +17,8 @@ class GameBoard
     puts row_1,row_2,row_3,row_4,row_5
   end
 
-  def update(str, mark)
-    @contents.gsub!(str, mark)
+  def update(move, mark)
+    @contents.gsub!(move.to_s, mark)
   end
 end
 
