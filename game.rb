@@ -5,7 +5,6 @@ class Game
     @player1 = player1
     @player2 = player2
     @board = board
-    @status = 0
   end
 
   public
@@ -14,13 +13,17 @@ class Game
     winning_combos_x = [/XXX....../,/...XXX.../,/......XXX/,/X..X..X../,/.X..X..X/,/..X..X..X/,/X...X...X/,/..X.X.X../]
     winning_combos_o = [/OOO....../,/...OOO.../,/......OOO/,/O..O..O../,/.O..O..O/,/..O..O..O/,/O...O...O/,/..O.O.O../]
 
-    winning_mark = nil
-    winning_mark = 'X' if winning_combos_x.any?{ |x| x === @board.contents }
-    winning_mark = 'O' if winning_combos_o.any?{ |x| x === @board.contents }  
+    winner = nil
+    winner = 'X' if winning_combos_x.any?{ |x| x === @board.contents }
+    winner = 'O' if winning_combos_o.any?{ |x| x === @board.contents }  
 
-    return @player1.name if @player1.name == winning_mark
-    return @player2.name if @player2.name == winning_mark
-    winning_mark   
+    return @player1.name if @player1.mark == winner
+    return @player2.name if @player2.mark == winner
+    winner   
+  end
+
+  def tie?
+    return 'tie' if @board.contents.split(//).none?(/\d/)
   end
 
   def prompt_player(player)
@@ -40,16 +43,15 @@ class Game
     if input.is_a? Numeric
       player.make_move(input)
     else
-      @status = 0
+      return 'quit'
     end
   end
 
   def play
-    @status = 1
     player = @player1
-    while @status == 1
+    loop do
       @board.draw()
-      prompt_player(player)
+      result = prompt_player(player)
       @board.update(player.move,player.mark)
 
       if player == @player1
@@ -60,11 +62,17 @@ class Game
 
       if winner?
         @board.draw()
-        @status = 0
+        return winner?
       end
 
+      if tie?
+        @board.draw()
+        return tie?
+      end
+
+      if result == 'quit'
+        return result
+      end
     end
   end
- 
-
 end

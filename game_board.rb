@@ -14,7 +14,7 @@ class GameBoard
     row_4 = "\t\t---|---|---"
     row_5 = "\t\t #{@contents[0]} | #{@contents[1]} | #{@contents[2]}"
 
-    puts row_1,row_2,row_3,row_4,row_5
+    puts "",row_1,row_2,row_3,row_4,row_5,""
   end
 
   def update(move, mark)
