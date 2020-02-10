@@ -26,10 +26,35 @@ module Message
   def replay
     puts "Would you like to play again? Enter y/n."
     input = gets.chomp
-    while input != ( 'y' || 'n')
-      puts "Please enter valid input (y/n)."
-      input = gets.chomp
+    loop do
+      if 'yn'.include?(input)
+        return input
+      else
+        puts "Please enter valid input (y/n)."
+        input = gets.chomp
+      end
     end
-    return input
   end
+
+  def prompt_player(player)
+    input = 0
+    reprompt = 1
+    while reprompt == 1
+      puts "#{player.name}, enter a position (1 - 9), or press q to quit"
+      input = gets.chomp
+      if (1..9).include?(input.to_i)
+        reprompt = 0
+        input = input.to_i
+      end
+      if input == 'q'
+        reprompt = 0
+      end
+    end
+    if input.is_a? Numeric
+      player.make_move(input)
+    else
+      return 'quit'
+    end
+  end
+
 end

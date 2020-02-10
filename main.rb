@@ -17,9 +17,15 @@ loop do
 
   game = Game.new(player1, player2, board)
   result = game.play()
+
   Message.display(result)
   break if result == 'quit'
-  Message.replay()
+
+  result = Message.replay()
+  if result == 'n'
+    Message.display('quit')
+    break
+  end
 end
 
 
