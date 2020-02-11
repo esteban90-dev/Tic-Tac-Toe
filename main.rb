@@ -6,7 +6,7 @@ require './lib/message.rb'
 include Message
 
 Message.display('welcome')
-
+ 
 loop do
   players = Message.get_player_names(2)
 
