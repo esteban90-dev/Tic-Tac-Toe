@@ -1,7 +1,7 @@
-require './game.rb'
-require './player.rb' 
-require './game_board.rb'
-require './message.rb'
+require './lib/game.rb'
+require './lib/player.rb' 
+require './lib/game_board.rb'
+require './lib/message.rb'
 
 include Message
 
