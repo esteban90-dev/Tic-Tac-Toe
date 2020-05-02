@@ -7,6 +7,37 @@ class Game
 
   public
 
+  def play
+    player = @player1
+    loop do
+      @board.draw()
+      result = prompt_player(player)
+      @board.update(player.move,player.mark)
+
+      if player == @player1
+        player = @player2
+      else
+        player = @player1
+      end
+
+      if winner?
+        @board.draw()
+        return winner?
+      end
+
+      if tie?
+        @board.draw()
+        return tie?
+      end
+
+      if result == 'quit'
+        return result
+      end
+    end
+  end
+
+  private 
+
   def winner?
     winning_combos_x = [/XXX....../,/...XXX.../,/......XXX/,/X..X..X../,/.X..X..X/,/..X..X..X/,/X...X...X/,/..X.X.X../]
     winning_combos_o = [/OOO....../,/...OOO.../,/......OOO/,/O..O..O../,/.O..O..O/,/..O..O..O/,/O...O...O/,/..O.O.O../]
@@ -45,32 +76,4 @@ class Game
     end
   end
 
-  def play
-    player = @player1
-    loop do
-      @board.draw()
-      result = prompt_player(player)
-      @board.update(player.move,player.mark)
-
-      if player == @player1
-        player = @player2
-      else
-        player = @player1
-      end
-
-      if winner?
-        @board.draw()
-        return winner?
-      end
-
-      if tie?
-        @board.draw()
-        return tie?
-      end
-
-      if result == 'quit'
-        return result
-      end
-    end
-  end
 end
