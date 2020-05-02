@@ -10,8 +10,8 @@ Message.display('welcome')
 loop do
   players = Message.get_player_names(2)
 
-  player1 = Player.new(players[0],"X")
-  player2 = Player.new(players[1],"O")
+  player1 = Player.new({:name => players[0], :mark => "X"})
+  player2 = Player.new({:name => players[1], :mark => "O"})
 
   board = GameBoard.new()
 
