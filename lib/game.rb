@@ -39,7 +39,7 @@ class Game
       end
     end
     if input.is_a? Numeric
-      player.make_move(input)
+      player.move = input
     else
       return 'quit'
     end
