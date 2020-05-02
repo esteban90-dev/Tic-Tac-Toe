@@ -12,9 +12,9 @@ class Game
   def play
     player = @player1
     loop do
-      puts @board.formatted
+      puts board.formatted
       result = prompt_player(player)
-      @board.update(player.move,player.mark)
+      board.update(player.move,player.mark)
 
       if player == @player1
         player = @player2
@@ -23,12 +23,12 @@ class Game
       end
 
       if board.winner?
-        puts @board.formatted
+        puts board.formatted
         return winner?
       end
 
-      if tie?
-        puts @board.formatted
+      if board.tie?
+        puts board.formatted
         return tie?
       end
 

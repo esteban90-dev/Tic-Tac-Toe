@@ -28,5 +28,10 @@ class GameBoard
     return true if winning_combos_x.any?{ |x| x === contents }
     true if winning_combos_o.any?{ |x| x === contents } 
   end
+
+  def tie?
+    return 'tie' if contents.split(//).none?(/\d/)
+  end
+  
 end
 
