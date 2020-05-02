@@ -3,8 +3,6 @@ require './lib/player.rb'
 require './lib/game_board.rb'
 require './lib/message.rb'
 
-include Message
-
 Message.display('welcome')
  
 loop do
