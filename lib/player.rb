@@ -1,10 +1,10 @@
 class Player
   attr_reader :name, :mark, :move
 
-  def initialize(name, mark)
-    @name = name
-    @mark = mark
-    @move = 0
+  def initialize(args)
+    @name = args.fetch(:name)
+    @mark = args.fetch(:mark)
+    @move = nil
   end
 
   public
