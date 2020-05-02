@@ -1,4 +1,6 @@
 class Game
+  attr_reader :board
+
   def initialize(player1, player2, board)
     @player1 = player1
     @player2 = player2
@@ -20,7 +22,7 @@ class Game
         player = @player1
       end
 
-      if winner?
+      if board.winner?
         puts @board.formatted
         return winner?
       end

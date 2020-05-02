@@ -18,7 +18,15 @@ class GameBoard
   end
 
   def update(move, mark)
-    @contents.gsub!(move.to_s, mark)
+    contents.gsub!(move.to_s, mark)
+  end
+
+  def winner?
+    winning_combos_x = [/XXX....../,/...XXX.../,/......XXX/,/X..X..X../,/.X..X..X/,/..X..X..X/,/X...X...X/,/..X.X.X../]
+    winning_combos_o = [/OOO....../,/...OOO.../,/......OOO/,/O..O..O../,/.O..O..O/,/..O..O..O/,/O...O...O/,/..O.O.O../]
+
+    return true if winning_combos_x.any?{ |x| x === contents }
+    true if winning_combos_o.any?{ |x| x === contents } 
   end
 end
 
