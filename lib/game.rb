@@ -1,14 +1,32 @@
-class Game
-  attr_reader :board
+require './lib/console_interface.rb'
 
-  def initialize(player1, player2, board)
-    @player1 = player1
-    @player2 = player2
+class Game
+  include ConsoleInterface
+
+  attr_reader :board
+  attr_accessor :players, :current_player, :other_player
+
+  def initialize(players, board)
+    @current_player = players.first
+    @other_player = players.last
+    @players = players
     @board = board
   end
 
   public
 
+  def play
+    loop do
+      display(board.formatted)
+      input = prompt("#{current_player.name}, enter a position (1 - 9), or press q to quit", /^[1-9]$/)
+      board.update(input, current_player.mark)
+      
+
+      switch_players
+    end
+  end
+
+=begin  
   def play
     player = @player1
     loop do
@@ -43,8 +61,15 @@ class Game
       end
     end
   end
+=end  
 
   private 
+
+  def switch_players
+    players.reverse!
+    self.current_player = players.first
+    self.other_player = players.last
+  end
 
   def game_over?
     return true if board.winner?
