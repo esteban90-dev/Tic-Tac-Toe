@@ -20,10 +20,10 @@ class Game
       display(board.formatted)
       input = prompt("#{current_player.name}, enter a position (1 - 9), or press q to quit", /^[1-9]$/)
       board.update(input, current_player.mark)
-      
-
+      break if game_over?
       switch_players
     end
+    display(result)
   end
 
 =begin  
@@ -64,6 +64,11 @@ class Game
 =end  
 
   private 
+
+  def result
+    return "Game was a tie" if board.tie?
+    "#{current_player.name} is the Winner!"
+  end
 
   def switch_players
     players.reverse!
