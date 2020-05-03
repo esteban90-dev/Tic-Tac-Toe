@@ -1,5 +1,5 @@
 module Message
-  def display(str)
+  def self.display(str)
     case str
     when 'welcome'
       puts "Welcome to Tic-Tac-Toe.  We will need two players to play this game."
@@ -12,7 +12,7 @@ module Message
     end
   end
 
-  def get_player_names(num)
+  def self.get_player_names(num)
     arr = []
     i = 0
     while i < num
@@ -23,7 +23,7 @@ module Message
     return arr
   end
 
-  def replay
+  def self.replay
     puts "Would you like to play again? Enter y/n."
     input = gets.chomp
     loop do

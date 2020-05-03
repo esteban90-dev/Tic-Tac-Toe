@@ -11,7 +11,6 @@ describe Player do
     end
   end
 
-
   context "#name" do 
     it "Returns name" do
       player = Player.new( { :name => "john", :mark => "X" })
@@ -33,6 +32,5 @@ describe Player do
       expect(player.move).to eql(9)
     end
   end
-
 
 end

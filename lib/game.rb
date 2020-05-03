@@ -22,6 +22,12 @@ class Game
         player = @player1
       end
 
+      if game_over?
+        puts board.formatted
+        return winner?
+        return tie?
+      end
+
       if board.winner?
         puts board.formatted
         return winner?
@@ -39,6 +45,11 @@ class Game
   end
 
   private 
+
+  def game_over?
+    return true if board.winner?
+    return true if board.tie?
+  end
 
   def winner?
     winning_combos_x = [/XXX....../,/...XXX.../,/......XXX/,/X..X..X../,/.X..X..X/,/..X..X..X/,/X...X...X/,/..X.X.X../]
