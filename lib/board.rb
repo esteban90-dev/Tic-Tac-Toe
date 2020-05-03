@@ -26,7 +26,8 @@ class Board
     winning_combos_o = [/OOO....../,/...OOO.../,/......OOO/,/O..O..O../,/.O..O..O/,/..O..O..O/,/O...O...O/,/..O.O.O../]
 
     return true if winning_combos_x.any?{ |x| x === contents }
-    true if winning_combos_o.any?{ |x| x === contents } 
+    return true if winning_combos_o.any?{ |x| x === contents } 
+    false
   end
 
   def tie?
