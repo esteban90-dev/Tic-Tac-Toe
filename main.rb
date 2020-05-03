@@ -11,7 +11,7 @@ loop do
   player1 = Player.new({:name => players[0], :mark => "X"})
   player2 = Player.new({:name => players[1], :mark => "O"})
 
-  board = GameBoard.new()
+  board = Board.new()
 
   game = Game.new(player1, player2, board)
   result = game.play()
