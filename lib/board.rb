@@ -32,6 +32,11 @@ class Board
   def tie?
     return 'tie' if contents.split(//).none?(/\d/)
   end
+
+  def result
+    return 'tie' if tie?
+    'winner'
+  end
   
 end
 
