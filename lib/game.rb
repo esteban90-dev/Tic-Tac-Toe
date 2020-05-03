@@ -16,10 +16,9 @@ class Game
   public
 
   def play
-    welcome
     loop do
       display(board.formatted)
-      input = prompt("#{current_player.name}, enter a position (1 - 9), or press q to quit", /^[1-9]$/)
+      input = prompt("#{current_player.name}, enter a position (1 - 9)", /^[1-9]$/)
       board.update(input, current_player.mark)
       break if game_over?
       switch_players
@@ -28,10 +27,6 @@ class Game
   end  
 
   private 
-
-  def welcome
-    display("Welcome to Tic-Tac-Toe!")
-  end
 
   def result
     return "Game was a tie" if board.tie?

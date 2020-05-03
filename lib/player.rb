@@ -5,5 +5,4 @@ class Player
     @name = args.fetch(:name)
     @mark = args.fetch(:mark)
   end
-
 end
