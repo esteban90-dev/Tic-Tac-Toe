@@ -1,7 +1,7 @@
 class Board
   attr_reader :contents
 
-  def initialize()
+  def initialize
     @contents = '123456789'
   end
 
@@ -17,8 +17,8 @@ class Board
     "#{row_1} \n #{row_2} \n #{row_3} \n #{row_4} \n #{row_5} \n"
   end
 
-  def update(move, mark)
-    contents.gsub!(move.to_s, mark)
+  def update(position, mark)
+    contents.gsub!(position, mark)
   end
 
   def winner?
