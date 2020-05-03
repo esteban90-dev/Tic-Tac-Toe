@@ -1,4 +1,5 @@
-module Message
+module ConsoleInterface
+=begin
   def self.display(str)
     case str
     when 'welcome'
@@ -35,4 +36,20 @@ module Message
       end
     end
   end
+=end
+
+  def display(string)
+    puts string
+  end
+
+  def prompt(string, regexp)
+    input = ""
+    loop do
+      puts string
+      input = gets.chomp
+      break if input.match?(regexp)
+    end
+    input
+  end
+  
 end
