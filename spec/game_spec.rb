@@ -46,4 +46,30 @@ describe Game do
     end
   end
 
+  context "#game_over?" do
+    it "returns true if there is a tie" do
+      board1 = double('board')
+      allow(board1).to receive(:winner?) { false }
+      allow(board1).to receive(:tie?) { true }
+      game = Game.new([joe,bob], board1)
+      expect(game.game_over?).to eql(true)
+    end
+
+    it "returns true if there is a winner" do
+      board1 = double('board')
+      allow(board1).to receive(:winner?) { true }
+      allow(board1).to receive(:tie?) { false }
+      game = Game.new([joe,bob], board1)
+      expect(game.game_over?).to eql(true)
+    end
+
+    it "returns false if there is no tie or winner" do
+      board1 = double('board')
+      allow(board1).to receive(:winner?) { false }
+      allow(board1).to receive(:tie?) { false }
+      game = Game.new([joe,bob], board1)
+      expect(game.game_over?).to eql(false)
+    end
+  end
+
 end
