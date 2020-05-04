@@ -152,4 +152,20 @@ describe Board do
     end
   end
 
+  context "#tie?" do
+    it "returns true if are no numbers left on the board" do
+      board = Board.new
+      board.update("1","X")
+      board.update("2","X")
+      board.update("3","X")
+      board.update("4","X")
+      board.update("5","X")
+      board.update("6","X")
+      board.update("7","X")
+      board.update("8","X")
+      board.update("9","X")
+      expect(board.tie?).to eql(true)
+    end
+  end
+
 end
