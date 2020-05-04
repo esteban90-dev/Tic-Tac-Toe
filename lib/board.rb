@@ -31,7 +31,7 @@ class Board
   end
 
   def tie?
-    return 'tie' if contents.split(//).none?(/\d/)
+    true if contents.split(//).none?(/\d/)
   end
 
   def result
