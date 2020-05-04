@@ -40,6 +40,7 @@ class Game
   def game_over?
     return true if board.winner?
     return true if board.tie?
+    false
   end
 
 end
