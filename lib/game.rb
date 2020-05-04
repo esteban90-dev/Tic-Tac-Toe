@@ -26,8 +26,6 @@ class Game
     display(result)
   end  
 
-  private 
-
   def result
     return "Game was a tie" if board.tie?
     "#{current_player.name} is the Winner!"
