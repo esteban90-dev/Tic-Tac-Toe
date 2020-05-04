@@ -168,4 +168,18 @@ describe Board do
     end
   end
 
+  context "#result" do
+    it "returns 'tie' when #tie? returns true" do
+      board = Board.new
+      allow(board).to receive(:tie?){ true }
+      expect(board.result).to eql('tie')
+    end
+
+    it "returns 'winner' when #tie? returns false" do
+      board = Board.new
+      allow(board).to receive(:tie?){ false }
+      expect(board.result).to eql('winner')
+    end
+  end
+
 end
