@@ -22,6 +22,21 @@ describe Board do
     end
   end
 
+  context "#formatted" do
+    it "returns a string" do
+      board = Board.new
+      expect(board.formatted).to be_kind_of String
+    end
+  end
+
+  context "#already_placed?" do
+    it "returns true if that position on the board has already been marked" do
+      board = Board.new
+      board.update("7","O")
+      expect(board.already_placed?("7")).to eql(true)
+    end
+  end
+
   context "#winner?" do
     it "returns true when there are X's in positions 1,2,3" do
       board = Board.new
