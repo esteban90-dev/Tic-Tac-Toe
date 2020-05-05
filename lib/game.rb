@@ -18,7 +18,11 @@ class Game
   def play
     loop do
       display(board.formatted)
-      input = prompt("#{current_player.name}, enter a position (1 - 9)", /^[1-9]$/)
+      input = ""
+      loop do
+        input = prompt("#{current_player.name}, enter a position (1 - 9)", /^[1-9]$/)
+        break unless board.already_placed?(input)
+      end
       board.update(input, current_player.mark)
       break if game_over?
       switch_players
