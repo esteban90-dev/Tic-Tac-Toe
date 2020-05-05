@@ -21,6 +21,11 @@ class Board
     contents.gsub!(position, mark)
   end
 
+  def already_placed?(position)
+    return true unless contents.include?(position)
+    false
+  end
+
   def winner?
     winning_combos_x = [/XXX....../,/...XXX.../,/......XXX/,/X..X..X../,/.X..X..X/,/..X..X..X/,/X...X...X/,/..X.X.X../]
     winning_combos_o = [/OOO....../,/...OOO.../,/......OOO/,/O..O..O../,/.O..O..O/,/..O..O..O/,/O...O...O/,/..O.O.O../]
